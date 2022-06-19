@@ -1,0 +1,3 @@
+function virarcarta(){
+    alert("aa")
+}
