@@ -1,44 +1,12 @@
 list=[]
 carta1="n"
 carta2=" n n"
-
-function virarcarta(par){
-   const elemento = document.querySelector(".flip");
-
-   
-   if(document.querySelector(".clicado")!==null){
-      par.classList.toggle("flip");
-      par.classList.add("clicado");
-      carta1 =  par.childNodes[1].childNodes[0].getAttribute("src")
-      if(carta1 === carta2 ){
-         document.querySelector(".clicado").classList.add("certo")
-         document.querySelector(".clicado").classList.remove("clicado")
-         document.querySelector(".clicado").classList.add("certo")
-         document.querySelector(".clicado").classList.remove("clicado")
-      }
-      else{
-         document.querySelector(".clicado").classList.remove("flip")
-         document.querySelector(".clicado").classList.remove("clicado")
-         document.querySelector(".clicado").classList.remove("flip")
-         document.querySelector(".clicado").classList.remove("clicado")
-      }
-   }
-   else{
-      par.classList.toggle("flip");
-      par.classList.add("clicado");
-      carta2 = par.childNodes[1].childNodes[0].getAttribute("src")
-   }
-
-}
-
-
-
-function comparador() { 
-	return Math.random() - 0.5; 
-}
-
+pontos = 0
+jogadas = 0
+qtdcartas= -1
 function colocarcartas (){
-   const qtdcartas = prompt("Quantas cartas vc deseja? (min: 4 max: 14)")
+    qtdcartas = prompt("Quantas cartas vc deseja? (min: 4 max: 14)")
+   console.log(qtdcartas)
    if(qtdcartas < 4|| qtdcartas >14 || qtdcartas % 2 !== 0){
       colocarcartas ()
    }
@@ -67,6 +35,51 @@ function colocarcartas (){
 }
 colocarcartas ()
 
+function finalizar(){
+   if (Number(qtdcartas )=== Number(pontos)){
+      alert(`vc terminou o jogo em ${jogadas} jogadas`)
+   }
+}
+
+function virarcarta(par){
+   const elemento = document.querySelector(".flip");
+   jogadas = jogadas + 1
+   if(document.querySelector(".clicado")!==null){
+      par.classList.toggle("flip");
+      par.classList.add("clicado");
+      carta1 =  par.childNodes[1].childNodes[0].getAttribute("src")
+      if(carta1 === carta2 ){
+         document.querySelector(".clicado").classList.add("certo")
+         document.querySelector(".clicado").classList.remove("clicado")
+         document.querySelector(".clicado").classList.add("certo")
+         document.querySelector(".clicado").classList.remove("clicado")
+         pontos = pontos + 2
+         finalizar()
+         console.log(pontos)
+         console.log(qtdcartas)
+      }
+      else{
+         setTimeout(function(){  
+         document.querySelector(".clicado").classList.remove("flip")
+         document.querySelector(".clicado").classList.remove("clicado")
+         document.querySelector(".clicado").classList.remove("flip")
+         document.querySelector(".clicado").classList.remove("clicado")
+         }, 1000);
+      }
+   }
+   else{
+      par.classList.toggle("flip");
+      par.classList.add("clicado");
+      carta2 = par.childNodes[1].childNodes[0].getAttribute("src")
+   }
+
+}
+
+
+
+function comparador() { 
+	return Math.random() - 0.5; 
+}
 
 
 function compararcartas (elemento){
