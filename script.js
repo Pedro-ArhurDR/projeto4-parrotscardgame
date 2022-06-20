@@ -42,35 +42,44 @@ function finalizar(){
 }
 
 function virarcarta(par){
-   const elemento = document.querySelector(".flip");
-   jogadas = jogadas + 1
-   if(document.querySelector(".clicado")!==null){
-      par.classList.toggle("flip");
-      par.classList.add("clicado");
-      carta1 =  par.childNodes[1].childNodes[0].getAttribute("src")
-      if(carta1 === carta2 ){
-         document.querySelector(".clicado").classList.add("certo")
-         document.querySelector(".clicado").classList.remove("clicado")
-         document.querySelector(".clicado").classList.add("certo")
-         document.querySelector(".clicado").classList.remove("clicado")
-         pontos = pontos + 2
-         finalizar()
-         console.log(pontos)
-         console.log(qtdcartas)
+   if(par.getAttribute('src')===null){
+      let virada = par.getAttribute("class");
+
+      if(virada !== "carta flip" && virada !== "carta clicada"){
+         const elemento = document.querySelector(".flip");
+         jogadas = jogadas + 1
+         if(document.querySelector(".clicado")!==null){
+            par.classList.toggle("flip");
+            par.classList.add("clicado");
+            carta1 =  par.childNodes[1].childNodes[0].getAttribute("src")
+            if(carta1 === carta2 ){
+               document.querySelector(".clicado").classList.add("certo")
+               document.querySelector(".clicado").classList.remove("clicado")
+               document.querySelector(".clicado").classList.add("certo")
+               document.querySelector(".clicado").classList.remove("clicado")
+               pontos = pontos + 2
+               finalizar()
+               console.log(pontos)
+               console.log(qtdcartas)
+            }
+            else{
+               setTimeout(function(){  
+               document.querySelector(".clicado").classList.remove("flip")
+               document.querySelector(".clicado").classList.remove("clicado")
+               document.querySelector(".clicado").classList.remove("flip")
+               document.querySelector(".clicado").classList.remove("clicado")
+               }, 1000);
+            }
+         }
+         else{
+            par.classList.toggle("flip");
+            par.classList.add("clicado");
+            carta2 = par.childNodes[1].childNodes[0].getAttribute("src")
+         }
+      
+   
       }
-      else{
-         setTimeout(function(){  
-         document.querySelector(".clicado").classList.remove("flip")
-         document.querySelector(".clicado").classList.remove("clicado")
-         document.querySelector(".clicado").classList.remove("flip")
-         document.querySelector(".clicado").classList.remove("clicado")
-         }, 1000);
-      }
-   }
-   else{
-      par.classList.toggle("flip");
-      par.classList.add("clicado");
-      carta2 = par.childNodes[1].childNodes[0].getAttribute("src")
+
    }
 
 }

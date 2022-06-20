@@ -16,10 +16,13 @@ body{
     color: #75B79E;
 }
 .cartas{
+    background-color: #e9f2c4;
+    border-radius: 10px;
     width: 1200px;
     height: 640px;
     margin: auto;
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(7, 2fr);
     
 }
@@ -38,7 +41,6 @@ body{
 
 .carta{
     position: relative;
-    background-color: aquamarine;
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform .5s;
@@ -92,8 +94,6 @@ body{
 
 @media(max-width:414px){
     .titulo{
-        width: 312px;
-        height: 63px;
         font-size: 42.19px;
         text-align: -webkit-center;
     }
@@ -101,6 +101,9 @@ body{
         margin-top: 70px;
         display: flex;
         flex-direction: column;
+        width: 100%;
+        text-align: center;
+    
     }
     .carta{
         margin-bottom:30px ;
