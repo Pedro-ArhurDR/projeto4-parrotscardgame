@@ -16,10 +16,12 @@ body{
     color: #75B79E;
 }
 .cartas{
-    margin-top: 50px;
-    display:grid ;
+    width: 1200px;
+    height: 640px;
+    margin: auto;
+    display: grid;
     grid-template-columns: repeat(7, 2fr);
-    grid-auto-rows: 200px;
+    
 }
 .carta img{
     width: 100px;
@@ -33,6 +35,7 @@ body{
     margin: auto;
     
 }
+
 .carta{
     position: relative;
     background-color: aquamarine;
@@ -45,7 +48,7 @@ body{
 }
 .carta:active {
     transform: scale(0.97);
-    transition: transform .1s;
+    transition: transform .5s;
   }
 
 .carta1{
@@ -68,15 +71,24 @@ body{
     display: flex;
     position: absolute;
     margin: auto;
+    backface-visibility: hidden;
+    
 }
+.back{
+    transform: rotateY(180deg);
+  }
 
-.show{
-    z-index: 1;
-}
 
 .flip{
     transform: rotateY(180deg);
 }
+
+.clicado{
+    border: 5px red solid;
+}
+
+
+
 
 @media(max-width:414px){
     .titulo{
